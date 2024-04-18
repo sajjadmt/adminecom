@@ -20,4 +20,5 @@ Route::controller(CategoryController::class)->group(function () {
 
 Route::controller(ProductListController::class)->group(function () {
     Route::get('product-list-by-remark/{remark}','ProductListByRemark');
+    Route::get('product-list-by-category/{category}','ProductListByCategory');
 });
