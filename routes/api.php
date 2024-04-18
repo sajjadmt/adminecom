@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,5 +15,9 @@ Route::controller(ContactController::class)->group(function () {
 });
 
 Route::controller(CategoryController::class)->group(function () {
-    Route::get('all-category','AllCategoryDetails');
+    Route::get('all-category', 'AllCategoryDetails');
+});
+
+Route::controller(ProductListController::class)->group(function () {
+    Route::get('product-list-by-remark/{remark}','ProductListByRemark');
 });
