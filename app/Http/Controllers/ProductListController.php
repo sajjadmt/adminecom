@@ -12,7 +12,7 @@ class ProductListController extends Controller
     public function ProductListByRemark(Request $request)
     {
         $remarkId = Remark::where('title',$request->remark)->first()->id;
-        $productList = ProductList::where('product_id',$remarkId)->limit(6)->get();
+        $productList = ProductList::where('remark_id',$remarkId)->limit(6)->get();
         return $productList;
     }
     public function ProductListByCategory(Request $request)
