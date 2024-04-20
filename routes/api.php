@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\SiteInfoController;
 use App\Http\Controllers\VisitorController;
@@ -12,7 +13,7 @@ Route::controller(VisitorController::class)->group(function () {
 });
 
 Route::controller(SiteInfoController::class)->group(function () {
-    Route::get('all-site-info','GetAllSiteInfo');
+    Route::get('all-site-info', 'GetAllSiteInfo');
 });
 
 Route::controller(ContactController::class)->group(function () {
@@ -26,4 +27,8 @@ Route::controller(CategoryController::class)->group(function () {
 Route::controller(ProductListController::class)->group(function () {
     Route::get('product-list-by-remark/{remark}', 'ProductListByRemark');
     Route::get('product-list-by-category/{category}', 'ProductListByCategory');
+});
+
+Route::controller(HomeSliderController::class)->group(function () {
+    Route::get('all-slider','AllSlider');
 });
