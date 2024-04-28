@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\SiteInfoController;
 use App\Http\Controllers\VisitorController;
@@ -30,5 +31,9 @@ Route::controller(ProductListController::class)->group(function () {
 });
 
 Route::controller(HomeSliderController::class)->group(function () {
-    Route::get('all-slider','AllSlider');
+    Route::get('all-slider', 'AllSlider');
+});
+
+Route::controller(ProductDetailsController::class)->group(function () {
+    Route::get('product-details/{id}','ProductDetails');
 });
