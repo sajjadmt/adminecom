@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\ProductListController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SiteInfoController;
 use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
@@ -41,4 +42,8 @@ Route::controller(ProductDetailsController::class)->group(function () {
 
 Route::controller(NotificationController::class)->group(function () {
     Route::get('notifications','AllNotification');
+});
+
+Route::controller(SearchController::class)->group(function (){
+    Route::get('search/{SearchKey}','SearchByProduct');
 });
