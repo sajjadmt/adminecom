@@ -45,5 +45,5 @@ Route::controller(NotificationController::class)->group(function () {
 });
 
 Route::controller(SearchController::class)->group(function (){
-    Route::get('search/{SearchKey}','SearchByProduct');
+    Route::get('search/{key}','SearchByProduct');
 });
