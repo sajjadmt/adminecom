@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SiteInfoController;
+use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,4 +47,11 @@ Route::controller(NotificationController::class)->group(function () {
 
 Route::controller(SearchController::class)->group(function (){
     Route::get('search/{key}','SearchByProduct');
+});
+
+//User Authentication
+
+Route::controller(AuthController::class)->group(function () {
+    Route::post('login','Login');
+    Route::post('register','Register');
 });
