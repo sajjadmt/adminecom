@@ -60,5 +60,5 @@ Route::controller(AuthenticationController::class)->group(function () {
 });
 
 Route::controller(ProductReviewController::class)->group(function () {
-    Route::get('review-list/{product_id}','ReviewList');
+    Route::get('review-list/{product_id}', 'ReviewList');
 });
