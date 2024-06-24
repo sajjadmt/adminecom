@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ProductCartController;
 use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProductReviewController;
@@ -61,4 +62,9 @@ Route::controller(AuthenticationController::class)->group(function () {
 
 Route::controller(ProductReviewController::class)->group(function () {
     Route::get('review-list/{product_id}', 'ReviewList');
+});
+
+Route::controller(ProductCartController::class)->group(function (){
+    Route::post('add-to-cart','AddToCart');
+    Route::get('cart-count/{userId}','CartCount');
 });
