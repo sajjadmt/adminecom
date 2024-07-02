@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProductCartController;
@@ -67,4 +68,10 @@ Route::controller(ProductReviewController::class)->group(function () {
 Route::controller(ProductCartController::class)->group(function (){
     Route::post('add-to-cart','AddToCart');
     Route::get('cart-count/{userId}','CartCount');
+});
+
+Route::controller(FavouriteController::class)->group(function (){
+    Route::post('add-to-favourite/{userId}/{productId}/{productDetailsId}','AddToFavourite');
+    Route::get('get-favourite/{userId}','GetFavourite');
+    Route::get('delete-favourite/{userId}/{productId}','DeleteFavourite');
 });
