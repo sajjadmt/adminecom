@@ -55,7 +55,7 @@ class AuthenticationController extends Controller
             return response([
                 'message' => 'Registeration Successfully',
                 'user' => $user,
-                'token' => $token->token
+                'token' => $token
             ],200);
         }catch (Exception $exception){
             return response([
