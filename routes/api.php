@@ -70,6 +70,8 @@ Route::controller(ProductCartController::class)->group(function (){
     Route::get('delete-cart/{userId}/{productId}','DeleteCart');
     Route::get('cart-list/{userId}','CartList');
     Route::get('cart-count/{userId}','CartCount');
+    Route::get('quantity-increase/{id}','QuantityIncrease');
+    Route::get('quantity-decrease/{id}','QuantityDecrease');
 });
 
 Route::controller(FavouriteController::class)->group(function (){

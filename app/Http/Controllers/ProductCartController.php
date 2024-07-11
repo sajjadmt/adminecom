@@ -14,8 +14,8 @@ class ProductCartController extends Controller
         $productId = $request->product_id;
         $productDetailsId = $request->product_details_id;
         $quantity = $request->quantity;
-        $product = ProductList::where('id',$productId)->first();
-        if ($product->special_price === ''){
+        $product = ProductList::where('id', $productId)->first();
+        if ($product->special_price === '') {
             $totalPrice = $product->price * $quantity;
         } else {
             $totalPrice = $product->special_price * $quantity;
@@ -33,7 +33,7 @@ class ProductCartController extends Controller
     public function CartCount(Request $request)
     {
         $userId = $request->userId;
-        return ProductCart::where('user_id',$userId)->count();
+        return ProductCart::where('user_id', $userId)->count();
     }
 
     public function CartList(Request $request)
@@ -47,7 +47,47 @@ class ProductCartController extends Controller
     {
         $userId = $request->userId;
         $productId = $request->productId;
-        $result = ProductCart::where('user_id',$userId)->where('product_id',$productId)->delete();
+        $result = ProductCart::where('user_id', $userId)->where('product_id', $productId)->delete();
+        return $result;
+    }
+
+    public function QuantityIncrease(Request $request)
+    {
+        $id = $request->id;
+        $item = ProductCart::where('id', $id)->first();
+        $product = ProductList::where('id', $item->product_id)->first();
+        $price = $product->price;
+        $special_price = $product->special_price;
+        $newQuantity = $item->quantity + 1;
+        if ($special_price === ''){
+            $newTotalPrice = $price * $newQuantity;
+        }else{
+            $newTotalPrice = $special_price * $newQuantity;
+        }
+        $result = $item->update([
+            'quantity' => $newQuantity,
+            'total_price' => $newTotalPrice
+        ]);
+        return $result;
+    }
+
+    public function QuantityDecrease(Request $request)
+    {
+        $id = $request->id;
+        $item = ProductCart::where('id', $id)->first();
+        $product = ProductList::where('id', $item->product_id)->first();
+        $price = $product->price;
+        $special_price = $product->special_price;
+        $newQuantity = $item->quantity - 1;
+        if ($special_price === ''){
+            $newTotalPrice = $price * $newQuantity;
+        }else{
+            $newTotalPrice = $special_price * $newQuantity;
+        }
+        $result = $item->update([
+            'quantity' => $newQuantity,
+            'total_price' => $newTotalPrice
+        ]);
         return $result;
     }
 }
