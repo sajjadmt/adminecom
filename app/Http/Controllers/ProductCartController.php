@@ -35,4 +35,19 @@ class ProductCartController extends Controller
         $userId = $request->userId;
         return ProductCart::where('user_id',$userId)->count();
     }
+
+    public function CartList(Request $request)
+    {
+        $userId = $request->userId;
+        $cartList = ProductCart::with('product')->where('user_id', $userId)->get();
+        return $cartList;
+    }
+
+    public function DeleteCart(Request $request)
+    {
+        $userId = $request->userId;
+        $productId = $request->productId;
+        $result = ProductCart::where('user_id',$userId)->where('product_id',$productId)->delete();
+        return $result;
+    }
 }

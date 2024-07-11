@@ -67,6 +67,8 @@ Route::controller(ProductReviewController::class)->group(function () {
 
 Route::controller(ProductCartController::class)->group(function (){
     Route::post('add-to-cart','AddToCart');
+    Route::get('delete-cart/{userId}/{productId}','DeleteCart');
+    Route::get('cart-list/{userId}','CartList');
     Route::get('cart-count/{userId}','CartCount');
 });
 
