@@ -28,7 +28,7 @@ class AuthenticationController extends Controller
                     'message' => 'Login Successfully',
                     'user' => $user,
                     'token' => $token
-                ],200);
+                ]);
             }
         }catch (Exception $exception){
             return response([
@@ -53,9 +53,9 @@ class AuthenticationController extends Controller
             ]);
             $token = $user->createToken('app')->plainTextToken;
             return response([
-                'message' => 'Registration Successfully',
+                'message' => 'Registeration Successfully',
                 'user' => $user,
-                'token' => $token,
+                'token' => $token->token
             ],200);
         }catch (Exception $exception){
             return response([

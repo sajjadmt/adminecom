@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeSliderController;
@@ -46,4 +47,12 @@ Route::controller(NotificationController::class)->group(function () {
 
 Route::controller(SearchController::class)->group(function (){
     Route::get('search/{key}','SearchByProduct');
+});
+
+Route::controller(AuthenticationController::class)->group(function (){
+    Route::post('login','Login');
+    Route::post('register','Register');
+    Route::post('forget-password','ForgetPassword');
+    Route::post('reset-password','ResetPassword');
+    Route::get('user','GetUser')->middleware(['auth:sanctum']);
 });

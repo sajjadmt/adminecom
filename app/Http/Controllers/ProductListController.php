@@ -21,4 +21,11 @@ class ProductListController extends Controller
         $productList = ProductList::where('category_id',$categoryId)->get();
         return $productList;
     }
+
+    public function SuggestedProducts(Request $request)
+    {
+        $subCategoryId = $request->subCategoryId;
+        $productList = ProductList::where('sub_category_id',$subCategoryId)->orderBy('id','desc')->limit(6)->get();
+        return $productList;
+    }
 }
