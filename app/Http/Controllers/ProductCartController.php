@@ -90,4 +90,41 @@ class ProductCartController extends Controller
         ]);
         return $result;
     }
+
+    public function QuantityIncrease(Request $request)
+    {
+        $id = $request->id;
+        $item = ProductCart::where('id',$id)->first();
+        $product = ProductList::where('id',$item->product_id)->first();
+        $newQuantity = $item->quantity + 1;
+        if ($product->special_price === ''){
+            $newTotalPrice = $newQuantity * $product->price;
+        }else{
+            $newTotalPrice = $newQuantity * $product->special_price;
+        }
+        $result = $item->update([
+            'quantity' => $newQuantity,
+            'total_price' => $newTotalPrice
+        ]);
+        return $result;
+    }
+
+    public function QuantityDecrease(Request $request)
+    {
+        $id = $request->id;
+        $item = ProductCart::where('id',$id)->first();
+        $product = ProductList::where('id',$item->product_id)->first();
+        $newQuantity = $item->quantity - 1;
+        if ($product->special_price === ''){
+            $newTotalPrice = $newQuantity * $product->price;
+        }else{
+            $newTotalPrice = $newQuantity * $product->special_price;
+        }
+        $result = $item->update([
+            'quantity' => $newQuantity,
+            'total_price' => $newTotalPrice
+        ]);
+        return $result;
+    }
+
 }
