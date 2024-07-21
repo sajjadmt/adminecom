@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\CartOrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FavouriteController;
@@ -65,17 +66,21 @@ Route::controller(ProductReviewController::class)->group(function () {
     Route::get('review-list/{product_id}', 'ReviewList');
 });
 
-Route::controller(ProductCartController::class)->group(function (){
-    Route::post('add-to-cart','AddToCart');
-    Route::get('delete-cart/{userId}/{productId}','DeleteCart');
-    Route::get('cart-list/{userId}','CartList');
-    Route::get('cart-count/{userId}','CartCount');
-    Route::get('quantity-increase/{id}','QuantityIncrease');
-    Route::get('quantity-decrease/{id}','QuantityDecrease');
+Route::controller(ProductCartController::class)->group(function () {
+    Route::post('add-to-cart', 'AddToCart');
+    Route::get('delete-cart/{userId}/{productId}', 'DeleteCart');
+    Route::get('cart-list/{userId}', 'CartList');
+    Route::get('cart-count/{userId}', 'CartCount');
+    Route::get('quantity-increase/{id}', 'QuantityIncrease');
+    Route::get('quantity-decrease/{id}', 'QuantityDecrease');
 });
 
-Route::controller(FavouriteController::class)->group(function (){
-    Route::post('add-to-favourite/{userId}/{productId}/{productDetailsId}','AddToFavourite');
-    Route::get('get-favourite/{userId}','GetFavourite');
-    Route::get('delete-favourite/{userId}/{productId}','DeleteFavourite');
+Route::controller(FavouriteController::class)->group(function () {
+    Route::post('add-to-favourite/{userId}/{productId}/{productDetailsId}', 'AddToFavourite');
+    Route::get('get-favourite/{userId}', 'GetFavourite');
+    Route::get('delete-favourite/{userId}/{productId}', 'DeleteFavourite');
+});
+
+Route::controller(CartOrderController::class)->group(function () {
+    Route::post('add-to-order/{user_id}','AddToOrder');
 });
