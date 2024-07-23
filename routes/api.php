@@ -82,5 +82,5 @@ Route::controller(FavouriteController::class)->group(function () {
 });
 
 Route::controller(CartOrderController::class)->group(function () {
-    Route::post('add-to-order/{user_id}','AddToOrder');
+    Route::post('add-to-order/{userId}','AddToOrder');
 });

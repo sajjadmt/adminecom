@@ -15,7 +15,7 @@ class CartOrderController extends Controller
         $city = $request->input('city');
         $payment = $request->input('payment');
         $address = $request->input('address');
-        $userId = $request->user_id;
+        $userId = $request->userId;
         $productCarts = ProductCart::where('user_id', $userId)->get();
         foreach ($productCarts as $productCart) {
             $creation = CartOrder::create([
