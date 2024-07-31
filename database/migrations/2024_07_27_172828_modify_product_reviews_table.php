@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('product_carts', function (Blueprint $table) {
-            $table->softDeletes()->after('total_price');
+        Schema::table('product_reviews', function (Blueprint $table) {
+            $table->dropColumn('reviewer_name');
+            $table->foreignId('user_id')->after('id')->constrained();
         });
     }
 
@@ -21,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('product_carts', function (Blueprint $table) {
+        Schema::table('product_reviews', function (Blueprint $table) {
             //
         });
     }

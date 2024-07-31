@@ -20,6 +20,8 @@ class CartOrderController extends Controller
         foreach ($productCarts as $productCart) {
             $creation = CartOrder::create([
                 'product_cart_id' => $productCart['id'],
+                'user_id' => $userId,
+                'product_id' => $productCart['product_id'],
                 'city' => $city,
                 'payment' => $payment,
                 'address' => $address,
@@ -28,4 +30,16 @@ class CartOrderController extends Controller
         }
         return $result;
     }
+
+    public function OrderHistory(Request $request)
+    {
+
+        $userId = $request->userId;
+        $result = CartOrder::with(['product', 'productCart' => function($query) {
+            $query->withTrashed();
+        }])->where('user_id', $userId)->orderBy('id', 'DESC')->get();
+        return $result;
+
+    }
+
 }

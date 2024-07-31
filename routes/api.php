@@ -64,6 +64,7 @@ Route::controller(AuthenticationController::class)->group(function () {
 
 Route::controller(ProductReviewController::class)->group(function () {
     Route::get('review-list/{product_id}', 'ReviewList');
+    Route::post('post-review/{userId}', 'PostReview');
 });
 
 Route::controller(ProductCartController::class)->group(function () {
@@ -83,4 +84,5 @@ Route::controller(FavouriteController::class)->group(function () {
 
 Route::controller(CartOrderController::class)->group(function () {
     Route::post('add-to-order/{userId}','AddToOrder');
+    Route::get('order-history/{userId}','OrderHistory');
 });

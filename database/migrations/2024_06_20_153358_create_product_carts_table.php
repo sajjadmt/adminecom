@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_details_id');
             $table->integer('quantity');
             $table->string('total_price');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

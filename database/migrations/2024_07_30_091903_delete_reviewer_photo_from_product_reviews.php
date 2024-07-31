@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('cart_orders', function (Blueprint $table) {
-            $table->softDeletes()->after('address');
+        Schema::table('product_reviews', function (Blueprint $table) {
+            $table->dropColumn('reviewer_photo');
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('cart_orders', function (Blueprint $table) {
+        Schema::table('product_reviews', function (Blueprint $table) {
             //
         });
     }

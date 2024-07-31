@@ -12,6 +12,11 @@ class CartOrder extends Model
 
     protected $guarded = [];
 
+    public function product()
+    {
+        return $this->belongsTo(ProductList::class);
+    }
+
     public function productCart()
     {
         return $this->belongsTo(ProductCart::class);
