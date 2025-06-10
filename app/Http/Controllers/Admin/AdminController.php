@@ -31,7 +31,7 @@ class AdminController
             }
             $fileName = md5(uniqid(microtime(true), true)) . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('upload/images/avatars'), $fileName);
-            $user->profile_photo_path = 'http://127.0.0.1:8000/upload/images/avatars/' . $fileName;
+            $user->profile_photo_path = '/upload/images/avatars/' . $fileName;
         }
         $user->name = $request->name;
         $user->save();

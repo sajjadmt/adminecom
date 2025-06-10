@@ -60,7 +60,7 @@
                                                                 <div class="d-flex align-items-center">
                                                                     <div class="recent-products-img">
                                                                         <img
-                                                                            src="{{ $user->profile_photo_path }}"
+                                                                            src="{{ asset($user->profile_photo_path) }}"
                                                                             title="{{ $user->name }}">
                                                                     </div>
                                                                 </div>

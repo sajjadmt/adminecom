@@ -164,7 +164,7 @@
                             @foreach($reviews as $review)
                                 <li class="list-group-item bg-transparent">
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ $review->user->profile_photo_path }}" alt="user avatar"
+                                        <img src="{{ asset($review->user->profile_photo_path) }}" alt="user avatar"
                                              class="rounded-circle"
                                              width="55" height="55">
                                         <div class="ms-3">

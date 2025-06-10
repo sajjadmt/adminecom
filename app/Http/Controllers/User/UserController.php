@@ -55,7 +55,7 @@ class UserController
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'profile_photo_path' => 'http://127.0.0.1:8000/upload/images/avatars/' . $fileName,
+            'profile_photo_path' => 'upload/images/avatars/' . $fileName,
             'status' => $request->status,
         ]);
         $notification = array(
@@ -87,7 +87,7 @@ class UserController
             $file = $request->file('profile_photo_path');
             $fileName = md5(uniqid(microtime(true), true)) . '.' . $file->getClientOriginalExtension();
             Image::make($file)->resize(400, 400)->save('upload/images/avatars/' . $fileName);
-            $user->profile_photo_path = 'http://127.0.0.1:8000/upload/images/avatars/' . $fileName;
+            $user->profile_photo_path = 'upload/images/avatars/' . $fileName;
         }
 
         $user->update([
