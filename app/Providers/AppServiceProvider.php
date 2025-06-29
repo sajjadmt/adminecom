@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Interfaces\ColorInterface;
 use App\Interfaces\SliderInterface;
+use App\Repositories\ColorRepository;
 use App\Repositories\SliderRepository;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
@@ -16,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(SliderInterface::class,SliderRepository::class);
+        $this->app->bind(ColorInterface::class,ColorRepository::class);
     }
 
     /**
